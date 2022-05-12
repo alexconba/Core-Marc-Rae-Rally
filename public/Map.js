@@ -1,0 +1,389 @@
+let pacmanMap = `WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
+WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
+WWWWWWW............WWWWWWWwwwww
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWwwwwwwwww.......wwwwwwwwwwWWW
+WWWWWWWWWW.......WWWWWWWWWWWWww
+WWWWWWWW.......WWWWWWWWWWWWwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWw.......WWWWWWWWWWwwwwww
+WWWWWW.......WWWWWWWWWWwwwwwwww
+WWWWWWW............WWWWWWWwwwww
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWwwwwwwwww.......wwwwwwwwwwWWW
+WWWWWWWWWW.......WWWWWWWWWWWWww
+WWWWWWWW.......WWWWWWWWWWWWwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWw.......WWWWWWWWWWwwwwww
+WWWWWW.......WWWWWWWWWWwwwwwwww
+WWWWWWw.......WWWWWWWWWWwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwwwww.........WWWWWWWWWW
+WWWWW....................WWWWWW
+WWWW.....................WWWWWW
+WWWW..........w..........WWWWWW
+WWWW..........w..........WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW.....................WWWWWW
+WWWWWW.......www.........WWWWWW
+WWWWW........www.........WWWWWW
+WWWW.........www.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...w..........w......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........WWWWWwwww
+WWWWWWWww..........WWWWWWWWWWww
+WWWWWWW............WWWWWWWWWWww
+ww.........www.......WWWWWWWWWW
+W.........wwwww.......WWWWWWWWW
+WW........wwwwww.......WWWWWWWW
+WWW.......wwwwwwww.......WWWWWW
+WWWW......wwwwwwwww.......WWWWW
+WWWWWW....wwwwwwwww.......WWWWW
+WWWW......wwwwwwww.......WWWWWW
+WWWW......wwwwwwwww.......WWWWW
+WWWW......wwwwwwwww.......WWWWW
+WWWW....wwwwwwwwww.......WWWWWW
+WWWW....wwwwwwwwwww.......WWWWW
+WWW.......wwwwwwwww.......WWWWW
+WWW.......wwwwwwww.......WWWWWW
+WWWWW...wwwwwwwwwww.......WWWWW
+WWWWW...wwwwwwwwwww.......WWWWW
+WWWWW...wwwwwwwwwww.......WWWWW
+WWWW....wwwwwwwww.......WWWWWWW
+WWWW....wwwwww.......WWWWWWWWWW
+WWWW....www.......WWWWWWWWWWwww
+WWWWW..........WWWWWWWWWWwwwwww
+WWWWWW.......WWWWWWWWWWwwwwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWw.......WWWWWWWWWWwwwwww
+WWWWWW.......WWWWWWWWWWwwwwwwww
+WWWWWWw.......WWWWWWWWWWwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwwwww.........WWWWWWWWWW
+WWWWW....................WWWWWW
+WWWW.....................WWWWWW
+WWWW..........w..........WWWWWW
+WWWW..........w..........WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW.....................WWWWWW
+WWWWWW.......www.........WWWWWW
+WWWWW........www.........WWWWWW
+WWWW.........www.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...w..........w......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........wwwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.........WWWWWWWWWWwww
+WWWWWWWww.........WWWWWWWWWWwww
+WWWWWWWww.........WWWWWWWWWWwww
+WWWWWWWww...........WWWWWWWWWWw
+WWWWWWWww...........WWWWWWWWWWw
+WWWWWW................WWWWWWWWW
+WWWWW....................WWWWWW
+WWWW.....................WWWWWW
+WWWWW....................WWWWWW
+WWWWw....................WWWWWW
+WWWWW....................WWWWWW
+WWWW.....................WWWWWW
+WW.WWWWWWWWWW.WW.WWWWWWWWWW.WWW
+WW.WWWWWWWWWW.WW.WWWWWWWWWW.WWW
+WW..........................WWW
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
+  .split("\n")
+  .map((f) => f.split(""));
+
+class Map {
+  constructor() {}
+
+  keyboard_event() {}
+  update() {}
+  draw(delta, ctx) {
+    /* Fill the code */
+    const totalRatio = 1024 / pacmanMap.length;
+    //ctx.save();
+    for (let y = 0; y < pacmanMap.length; y++) {
+      // en el caso de querer ajustar la linea horizontal al canvas
+      //let horizontalSize = 1024 / pacmanMap[y].length;
+
+      for (let x = 0; x < pacmanMap[y].length; x++) {
+        ctx.beginPath();
+        const mapCharacter = pacmanMap[y][x];
+        if (mapCharacter == "W") {
+          ctx.rect(
+            x * totalRatio, // x * horizontalSize
+            y * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+        }
+        if (mapCharacter == ".") {
+          ctx.arc(
+            x * totalRatio + totalRatio / 2, // x * horizontalSize + horizontalSize / 2
+            y * totalRatio + totalRatio / 2,
+            7,
+            0,
+            2 * Math.PI
+          );
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+  }
+}

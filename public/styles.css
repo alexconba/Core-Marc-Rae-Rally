@@ -1,4 +1,10 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: beige;
+}
+
+canvas {
+  border: 5px;
+  border-color: blue;
 }
