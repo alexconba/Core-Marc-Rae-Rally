@@ -13,17 +13,17 @@ fastify.register(require("@fastify/static"), {
   prefix: "/public/",
 });
 
-fastify.register(require("point-of-view"), {
-  engine: {
-    handlebars: require("handlebars"),
-  },
-  root: path.join(__dirname, "../views"),
-  layout: "/templates/main.hbs",
-});
+//fastify.register(require("point-of-view"), {
+//engine: {
+//   handlebars: require("handlebars"),
+// },
+//root: path.join(__dirname, "../views"),
+// layout: "/templates/main.hbs",
+//});
 
-fastify.register(require("@fastify/formbody"));
+//fastify.register(require("@fastify/formbody"));
 
-fastify.register(require("./routes/main.router"));
+//fastify.register(require("./routes/main.router"));
 
 const port = 3000;
 fastify.listen(port, () => {
