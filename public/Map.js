@@ -340,8 +340,8 @@ WWWWW....................WWWWWW
 WWWWw....................WWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
-WW.WWWWWWWWWW.WW.WWWWWWWWWW.WWW
-WW.WWWWWWWWWW.WW.WWWWWWWWWW.WWW
+WW.WWWWWWWWWW....WWWWWWWWWW.WWW
+WW.WWWWWWWWWW....WWWWWWWWWW.WWW
 WW..........................WWW
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .split("\n")
@@ -363,7 +363,8 @@ class Map {
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
-        if (mapCharacter == "W") {
+        if (mapCharacter === "W") {
+          ctx.fillStyle = green;
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,
@@ -372,12 +373,11 @@ class Map {
           );
         }
         if (mapCharacter == ".") {
-          ctx.arc(
-            x * totalRatio + totalRatio / 2, // x * horizontalSize + horizontalSize / 2
-            y * totalRatio + totalRatio / 2,
-            7,
-            0,
-            2 * Math.PI
+          ctx.rect(
+            x * totalRatio, // x * horizontalSize
+            y * totalRatio,
+            totalRatio,
+            totalRatio
           );
         }
         ctx.closePath();
