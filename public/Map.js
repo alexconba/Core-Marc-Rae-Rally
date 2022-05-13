@@ -348,7 +348,9 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .map((f) => f.split(""));
 
 class Map {
-  constructor() {}
+  constructor() {
+    this.position = this.position;
+  }
 
   keyboard_event() {}
   update() {}
@@ -364,7 +366,7 @@ class Map {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
         if (mapCharacter === "W") {
-          ctx.fillStyle = green;
+          ctx.fillStyle = "green";
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,
@@ -373,6 +375,7 @@ class Map {
           );
         }
         if (mapCharacter == ".") {
+          ctx.fillStyle = "grey";
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,
