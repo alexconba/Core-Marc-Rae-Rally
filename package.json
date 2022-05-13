@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,10 @@
   "homepage": "https://github.com/alexconba/mid-proyecto#readme",
   "dependencies": {
     "@fastify/formbody": "^7.0.0",
-    "@fastify/static": "^5.0.2",
-    "fastify": "^3.29.0",
     "handlebars": "^4.7.7",
-    "nodemon": "^2.0.16",
     "pino": "^7.11.0",
     "pino-pretty": "^7.6.1",
-    "point-of-view": "^6.0.0"
+    "point-of-view": "^6.0.0",
+    "vite": "^2.9.9"
   }
 }
