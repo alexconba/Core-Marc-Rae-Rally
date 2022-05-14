@@ -1,2 +1,2 @@
-export declare module "*.png";
-export declare module "*.jpg";
+declare module "*.png";
+declare module "*.jpg";

@@ -1,4 +1,4 @@
-// import { Pacman } from './Pacman';
+import { Pacman } from "./Pacman";
 import { Map } from "./Map";
 import { FPSViewer } from "./FPSViewer";
 import { Actor } from "./Actor";

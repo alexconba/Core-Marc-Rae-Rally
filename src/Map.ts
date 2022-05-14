@@ -1,7 +1,8 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 
-let pacmanMap = `WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+let pacmanMap = `
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
 WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
 WWWWWWW............WWWWWWWwwwww
@@ -371,12 +372,11 @@ export class Map extends Actor {
           );
         }
         if (mapCharacter == ".") {
-          ctx.arc(
-            x * totalRatio + totalRatio / 2, // x * horizontalSize + horizontalSize / 2
-            y * totalRatio + totalRatio / 2,
-            7,
-            0,
-            2 * Math.PI
+          ctx.rect(
+            x * totalRatio, // x * horizontalSize
+            y * totalRatio,
+            totalRatio,
+            totalRatio
           );
         }
         ctx.closePath();
