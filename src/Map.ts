@@ -1,3 +1,6 @@
+import { Actor } from "./Actor";
+import { Point } from "./types/Point";
+
 let pacmanMap = `WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
 WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
@@ -347,14 +350,8 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .split("\n")
   .map((f) => f.split(""));
 
-class Map {
-  constructor() {
-    this.position = this.position;
-  }
-
-  keyboard_event() {}
-  update() {}
-  draw(delta, ctx) {
+export class Map extends Actor {
+  draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
     const totalRatio = 1024 / pacmanMap.length;
     //ctx.save();
@@ -365,8 +362,7 @@ class Map {
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
-        if (mapCharacter === "W") {
-          ctx.fillStyle = "green";
+        if (mapCharacter == "W") {
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,
@@ -375,12 +371,12 @@ class Map {
           );
         }
         if (mapCharacter == ".") {
-          ctx.fillStyle = "grey";
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
-            y * totalRatio,
-            totalRatio,
-            totalRatio
+          ctx.arc(
+            x * totalRatio + totalRatio / 2, // x * horizontalSize + horizontalSize / 2
+            y * totalRatio + totalRatio / 2,
+            7,
+            0,
+            2 * Math.PI
           );
         }
         ctx.closePath();

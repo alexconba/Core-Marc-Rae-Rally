@@ -1,13 +1,7 @@
-class FPSViewer {
-  constructor(position) {
-    this.position = position;
-  }
+import { Actor } from "./Actor";
 
-  keyboard_event() {}
-
-  update() {}
-
-  draw(delta, ctx) {
+export class FPSViewer extends Actor {
+  draw(delta: number, ctx: CanvasRenderingContext2D) {
     const fps = (1 / delta).toFixed(2);
     ctx.font = "50px Arial";
     ctx.fillStyle = "black";
