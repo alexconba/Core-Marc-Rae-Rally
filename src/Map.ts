@@ -355,6 +355,8 @@ export class Map extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
     const totalRatio = 1024 / pacmanMap.length;
+    let img = new Image();
+    img.src = "./public/sprites/road.png";
     //ctx.save();
     for (let y = 0; y < pacmanMap.length; y++) {
       // en el caso de querer ajustar la linea horizontal al canvas
@@ -364,12 +366,7 @@ export class Map extends Actor {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
         if (mapCharacter == "W") {
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
-            y * totalRatio,
-            totalRatio,
-            totalRatio
-          );
+          ctx.drawImage(img, 50, 450, 390, 500);
         }
         if (mapCharacter == ".") {
           ctx.rect(

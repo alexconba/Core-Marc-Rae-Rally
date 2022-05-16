@@ -3,15 +3,18 @@ import { Map } from "./Map";
 import { FPSViewer } from "./FPSViewer";
 import { Actor } from "./Actor";
 import { Car } from "./Car";
+import { Crono } from "./crono";
 
 window.onload = () => {
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
   let actors: Actor[] = [
-    new Map({ x: 0, y: 0 }),
+    new Map({ x: -0, y: -0 }),
     // new Pacman({ x: 200, y: 200 }, 'yellow', 1000),
     // new Pacman({ x: 200, y: 400 }, 'pink'),
     new FPSViewer({ x: 5, y: 100 }),
+    new Crono({ x: 5, y: 190 }),
     new Car({ x: 200, y: 200 }),
   ];
   let lastFrame = 0;
