@@ -13,8 +13,8 @@ window.onload = () => {
     new Map({ x: 1, y: 1 }),
     // new Pacman({ x: 200, y: 200 }, 'yellow', 1000),
     // new Pacman({ x: 200, y: 400 }, 'pink'),
-    new FPSViewer({ x: 5, y: 100 }),
-    new Crono({ x: 5, y: 190 }),
+    new FPSViewer({ x: 5, y: 50 }),
+    new Crono({ x: 400, y: 50 }),
     new Car({ x: 1020, y: 800 }),
   ];
   let lastFrame = 0;

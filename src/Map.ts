@@ -1,6 +1,8 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
+// import { image } from "../public/sprites/road.png";
 
+// let road = image;
 let pacmanMap = `
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww

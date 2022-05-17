@@ -11,8 +11,8 @@ body {
   align-items: center;
 }
 .visor {
-  border: 50px;
-  border-color: black;
+  border: 15px solid black;
+  /* border-radius: 45%; */
 }
 
 #canvas {

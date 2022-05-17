@@ -15,7 +15,7 @@ export class Car extends Actor {
   angleSpeed: number;
   carSpeed: number;
   carAcceleration: number;
-  constructor(initialPos: Point, size: Size = { w: 50, h: 100 }) {
+  constructor(initialPos: Point, size: Size = { w: 300, h: 190 }) {
     super(initialPos);
     this.carSize = size;
     this.carColor = "red";
