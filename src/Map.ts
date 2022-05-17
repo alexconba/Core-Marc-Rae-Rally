@@ -350,13 +350,16 @@ WW..........................WWW
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .split("\n")
   .map((f) => f.split(""));
+// let road = new Image();
+// let grass = new Image();
+// road.src = "./public/sprites/road.png";
+// grass.src = "./public/sprites/snes High Grass.jpg";
 
 export class Map extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
-    const totalRatio = 1024 / pacmanMap.length;
-    let img = new Image();
-    img.src = "./public/sprites/road.png";
+    const totalRatio = 26624 / pacmanMap.length;
+
     //ctx.save();
     for (let y = 0; y < pacmanMap.length; y++) {
       // en el caso de querer ajustar la linea horizontal al canvas
@@ -366,20 +369,42 @@ export class Map extends Actor {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
         if (mapCharacter == "W") {
-          ctx.drawImage(img, 50, 450, 390, 500);
-        }
-        if (mapCharacter == ".") {
+          // ctx.drawImage(grass, 3, 49, 50, 50);
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,
             totalRatio,
             totalRatio
           );
+          ctx.fillStyle = "green";
+        }
+        if (mapCharacter == ".") {
+          // ctx.drawImage(road, 50, 450, 390, 500);
+          ctx.rect(
+            x * totalRatio, // x * horizontalSize
+            y * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+          ctx.fillStyle = "grey";
         }
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
       }
+    }
+  }
+  keyboard_event_down(key: string) {
+    switch (key) {
+      case "ArrowUp":
+        console.log("up");
+        break;
+      case "ArrowDown":
+        console.log("down");
+        break;
+      default:
+        console.log("not a valid key");
+        break;
     }
   }
 }
