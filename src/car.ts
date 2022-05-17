@@ -2,6 +2,7 @@ import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
 import { checkLimits } from "./utils/checkLimits";
+import { checkAngle } from "./utils/angleLimit";
 
 interface Size {
   w: number;
@@ -27,7 +28,11 @@ export class Car extends Actor {
 
   update(delta: number): void {
     // console.log(this.angle);
-    this.angle += this.angleSpeed;
+    let newangle = this.angle + this.angleSpeed;
+    if (checkAngle(newangle)) {
+      this.angle = newangle;
+    }
+    // console.log(newangle);
     this.angleSpeed *= 0.9;
     this.carSpeed = this.carSpeed * 0.9 + this.carAcceleration;
     let newPos: Point = {

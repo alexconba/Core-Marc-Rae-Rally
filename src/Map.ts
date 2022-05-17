@@ -363,7 +363,7 @@ export class Map extends Actor {
     const totalRatio = 26624 / pacmanMap.length;
 
     //ctx.save();
-    for (let y = 0; y < pacmanMap.length; y++) {
+    for (let y = pacmanMap.length - 1; y >= 0; y--) {
       // en el caso de querer ajustar la linea horizontal al canvas
       //let horizontalSize = 1024 / pacmanMap[y].length;
 
@@ -371,6 +371,16 @@ export class Map extends Actor {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
         if (mapCharacter == "W") {
+          // ctx.drawImage(grass, 3, 49, 50, 50);
+          ctx.rect(
+            x * totalRatio, // x * horizontalSize
+            y * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+          ctx.fillStyle = "green";
+        }
+        if (mapCharacter == "w") {
           // ctx.drawImage(grass, 3, 49, 50, 50);
           ctx.rect(
             x * totalRatio, // x * horizontalSize
