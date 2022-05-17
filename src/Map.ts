@@ -1,33 +1,34 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
+import { converAngleToRad } from "./utils/angleToRad";
 // import { image } from "../public/sprites/road.png";
 
 // let road = image;
 let pacmanMap = `
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
-WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
+WWWWWWWW...........WWWWWWWWWWWW
+WWWWWWW.............wwwwwwwwwww
+WWWWWWW............wwwwwwwwwwww
 WWWWWWW............WWWWWWWwwwww
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWwwwwwwwww.......wwwwwwwwwwWWW
-WWWWWWWWWW.......WWWWWWWWWWWWww
-WWWWWWWW.......WWWWWWWWWWWWwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWwwwww.......WWWWWWWWWWww
-WWWWWWWwwwwwww.......WWWWWWWWWW
-WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWww..................WWWWWWWWW
+WWww..................wwwwwwWWW
+WWWW......www........wWWWWWWWww
+WWWW.......www........WWWWWwwww
+WWWWWWW................WWWWWwww
+WWWWWWW...............WWWWwwwww
+WWWWWWW.......WW......WWWWwwwww
+WWWWWWW.......WW......WWWWwwwww
+WWWWWWW.......WWW.....WWWWwwwww
+WWWWWWW.......WWWW....WWWWwwwww
+WWWWWWWww.......WWW...WWWWwwwww
+WWWWWWWwwww.......W.....WWWWwww
+WWWWWWWwwwww.......W....WWWWWww
+WWWWWWWwwwwwww..........WWWWWWW
+WWWWWWWwwwwwwww.........WWWWWWW
 WWWWWWWwwwwwwwww.......WWWWWWWW
 WWWWWWWwwwwwwwwwww.......WWWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
@@ -361,7 +362,8 @@ export class Map extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
     const totalRatio = 26624 / pacmanMap.length;
-
+    ctx.translate(2040, 1024);
+    ctx.rotate(converAngleToRad(180));
     //ctx.save();
     for (let y = pacmanMap.length - 1; y >= 0; y--) {
       // en el caso de querer ajustar la linea horizontal al canvas
