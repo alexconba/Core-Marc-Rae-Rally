@@ -62,16 +62,18 @@ export class Car extends Actor {
   keyboard_event_down(key: string): void {
     if (key === "ArrowLeft") {
       this.angleSpeed -= 4;
+      this.carAcceleration = 1;
     } else if (key === "ArrowRight") {
       this.angleSpeed += 4;
+      this.carAcceleration = 1;
     }
   }
 
-  keyboard_event_up(key: string): void {
-    if (key === "ArrowUp") {
-      this.carAcceleration = 0;
-    } else if (key === "ArrowDown") {
-      this.carAcceleration = 0;
-    }
-  }
+  // keyboard_event_up(key: string): void {
+  //   if (key === "ArrowLeft") {
+  //     this.carAcceleration = 1;
+  //   } else if (key === "ArrowRight") {
+  //     this.carAcceleration = 1;
+  //   }
+  // }
 }

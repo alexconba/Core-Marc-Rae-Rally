@@ -1,9 +1,9 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
-// import { image } from "../public/sprites/road.png";
+import image from "../sprites/road.png";
 
-// let road = image;
+// let road = imageR;
 let pacmanMap = `
 WWWWWWWW...........WWWWWWWWWWWW
 WWWWWWW.............wwwwwwwwwww
@@ -355,8 +355,8 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .map((f) => f.split(""));
 // let road = new Image();
 // let grass = new Image();
-// road.src = "./public/sprites/road.png";
-// grass.src = "./public/sprites/snes High Grass.jpg";
+// road.src = "../sprites/road.png";
+// grass.src = "../sprites/snes High Grass.jpg";
 
 export class Map extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
