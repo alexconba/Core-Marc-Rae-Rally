@@ -1,8 +1,8 @@
 import { Pacman } from "./Pacman";
 import { Map } from "./Map";
-import { FPSViewer } from "./FPSViewer";
+import { FPSViewer } from "./fpsViewer";
 import { Actor } from "./Actor";
-import { Car } from "./Car";
+import { Car } from "./car";
 import { Crono } from "./crono";
 
 window.onload = () => {

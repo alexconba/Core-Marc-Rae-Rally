@@ -1,9 +1,8 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
-import image from "./sprites/road.png";
+import imageR from "./sprites/road.png";
 
-// let road = imageR;
 let pacmanMap = `
 WWWWWWWW...........WWWWWWWWWWWW
 WWWWWWW.............wwwwwwwwwww
@@ -393,7 +392,7 @@ export class Map extends Actor {
           ctx.fillStyle = "green";
         }
         if (mapCharacter == ".") {
-          // ctx.drawImage(road, 50, 450, 390, 500);
+          // ctx.drawImage(imageR, 50, 450, 390, 500);
           ctx.rect(
             x * totalRatio, // x * horizontalSize
             y * totalRatio,

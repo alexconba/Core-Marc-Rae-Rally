@@ -39,6 +39,10 @@ export class Car extends Actor {
     let newpos = this.position.x + this.carSpeed;
     this.position.x = newpos;
     // console.log(newpos);
+    let newPosition = this.position.x + this.carSpeed * delta;
+    if (newPosition < 2040 && newPosition > 0) {
+      this.position.x = newPosition;
+    }
   }
   draw(delta: number, ctx: CanvasRenderingContext2D): void {
     ctx.translate(this.position.x, this.position.y);
