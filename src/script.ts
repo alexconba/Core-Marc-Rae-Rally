@@ -36,14 +36,14 @@ window.onload = () => {
   window.requestAnimationFrame(render);
 
   document.body.addEventListener("keydown", (e) => {
-    console.log("Keydown", e);
+    // console.log("Keydown", e);
     actors.forEach((actor) => {
       actor.keyboard_event_down(e.key);
     });
   });
 
   document.body.addEventListener("keyup", (e) => {
-    console.log("keyUp", e);
+    // console.log("keyUp", e);
     actors.forEach((actor) => {
       actor.keyboard_event_up(e.key);
     });

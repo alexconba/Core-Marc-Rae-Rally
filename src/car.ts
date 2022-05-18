@@ -35,18 +35,10 @@ export class Car extends Actor {
     // console.log(newangle);
     this.angleSpeed *= 0.9;
     this.carSpeed = this.carSpeed * 0.9 + this.carAcceleration;
-    let newPos: Point = {
-      x:
-        this.position.x +
-        Math.cos(converAngleToRad(this.angle)) * this.carSpeed,
-      y:
-        this.position.y +
-        Math.sin(converAngleToRad(this.angle)) * this.carSpeed,
-    };
 
-    if (checkLimits(newPos)) {
-      this.position = newPos;
-    }
+    let newpos = this.position.x + this.carSpeed;
+    this.position.x = newpos;
+    // console.log(newpos);
   }
   draw(delta: number, ctx: CanvasRenderingContext2D): void {
     ctx.translate(this.position.x, this.position.y);
@@ -62,18 +54,17 @@ export class Car extends Actor {
   keyboard_event_down(key: string): void {
     if (key === "ArrowLeft") {
       this.angleSpeed -= 4;
-      this.carAcceleration = 1;
+      this.carAcceleration = -0.3;
     } else if (key === "ArrowRight") {
       this.angleSpeed += 4;
-      this.carAcceleration = 1;
+      this.carAcceleration = 0.3;
     }
   }
-
-  // keyboard_event_up(key: string): void {
-  //   if (key === "ArrowLeft") {
-  //     this.carAcceleration = 1;
-  //   } else if (key === "ArrowRight") {
-  //     this.carAcceleration = 1;
-  //   }
-  // }
+  keyboard_event_up(key: string): void {
+    if (key === "ArrowLeft") {
+      this.carAcceleration = 0;
+    } else if (key === "ArrowRight") {
+      this.carAcceleration = 0;
+    }
+  }
 }

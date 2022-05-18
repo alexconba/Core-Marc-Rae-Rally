@@ -1,7 +1,7 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
-import image from "../sprites/road.png";
+import image from "./sprites/road.png";
 
 // let road = imageR;
 let pacmanMap = `
@@ -408,17 +408,17 @@ export class Map extends Actor {
       }
     }
   }
-  keyboard_event_down(key: string) {
-    switch (key) {
-      case "ArrowUp":
-        console.log("up");
-        break;
-      case "ArrowDown":
-        console.log("down");
-        break;
-      default:
-        console.log("not a valid key");
-        break;
-    }
-  }
+  // keyboard_event_down(key: string) {
+  //   switch (key) {
+  //     case "ArrowUp":
+  //       console.log("up");
+  //       break;
+  //     case "ArrowDown":
+  //       console.log("down");
+  //       break;
+  //     default:
+  //       console.log("not a valid key");
+  //       break;
+  //   }
+  // }
 }
