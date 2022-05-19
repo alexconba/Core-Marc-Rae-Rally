@@ -10,7 +10,7 @@ window.onload = () => {
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   let actors: Actor[] = [
-    new Map({ x: 1, y: 1 }),
+    new Map({ x: 0, y: 0 }),
     // new Pacman({ x: 200, y: 200 }, 'yellow', 1000),
     // new Pacman({ x: 200, y: 400 }, 'pink'),
     new FPSViewer({ x: 5, y: 50 }),

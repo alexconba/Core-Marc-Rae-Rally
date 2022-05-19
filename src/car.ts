@@ -3,7 +3,7 @@ import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
 import { checkLimits } from "./utils/checkLimits";
 import { checkAngle } from "./utils/angleLimit";
-
+import imageA from "./sprites/carros.png";
 interface Size {
   w: number;
   h: number;
@@ -16,6 +16,7 @@ export class Car extends Actor {
   angleSpeed: number;
   carSpeed: number;
   carAcceleration: number;
+  carImage: HTMLImageElement;
   constructor(initialPos: Point, size: Size = { w: 300, h: 190 }) {
     super(initialPos);
     this.carSize = size;
@@ -24,6 +25,8 @@ export class Car extends Actor {
     this.angleSpeed = 0;
     this.carSpeed = 0;
     this.carAcceleration = 0;
+    this.carImage = new Image();
+    this.carImage.src = imageA;
   }
 
   update(delta: number): void {
@@ -47,8 +50,13 @@ export class Car extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D): void {
     ctx.translate(this.position.x, this.position.y);
     ctx.rotate(converAngleToRad(this.angle));
-    ctx.fillStyle = this.carColor;
-    ctx.fillRect(
+    // ctx.fillStyle = this.carColor;
+    ctx.drawImage(
+      this.carImage,
+      176,
+      149,
+      32,
+      72,
       -this.carSize.h / 2,
       -this.carSize.w / 2,
       this.carSize.h,

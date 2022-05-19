@@ -2,6 +2,7 @@ import { Actor } from "./Actor";
 import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
 import imageR from "./sprites/road.png";
+import imageC from "./sprites/elGrass.png";
 
 let pacmanMap = `
 WWWWWWWW...........WWWWWWWWWWWW
@@ -352,18 +353,24 @@ WW..........................WWW
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .split("\n")
   .map((f) => f.split(""));
-// let road = new Image();
-// let grass = new Image();
-// road.src = "../sprites/road.png";
-// grass.src = "../sprites/snes High Grass.jpg";
 
 export class Map extends Actor {
+  roadimg: HTMLImageElement;
+  grassimg: HTMLImageElement;
+  constructor(initialPos: Point) {
+    super(initialPos);
+    this.roadimg = new Image();
+    this.roadimg.src = imageR;
+    this.grassimg = new Image();
+    this.grassimg.src = imageC;
+  }
+
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
     const totalRatio = 26624 / pacmanMap.length;
     ctx.translate(2040, 1024);
     ctx.rotate(converAngleToRad(180));
-    //ctx.save();
+
     for (let y = pacmanMap.length - 1; y >= 0; y--) {
       // en el caso de querer ajustar la linea horizontal al canvas
       //let horizontalSize = 1024 / pacmanMap[y].length;
@@ -371,35 +378,32 @@ export class Map extends Actor {
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
-        if (mapCharacter == "W") {
-          // ctx.drawImage(grass, 3, 49, 50, 50);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
+        if (mapCharacter === "W") {
+          ctx.drawImage(
+            this.grassimg,
+            x * totalRatio,
             y * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "green";
         }
-        if (mapCharacter == "w") {
-          // ctx.drawImage(grass, 3, 49, 50, 50);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
+        if (mapCharacter === "w") {
+          ctx.drawImage(
+            this.grassimg,
+            x * totalRatio,
             y * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "green";
         }
-        if (mapCharacter == ".") {
-          // ctx.drawImage(imageR, 50, 450, 390, 500);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
+        if (mapCharacter === ".") {
+          ctx.drawImage(
+            this.roadimg,
+            x * totalRatio,
             y * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "grey";
         }
         ctx.closePath();
         ctx.fill();
