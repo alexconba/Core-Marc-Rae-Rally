@@ -404,7 +404,6 @@ export class Map extends Actor {
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
-
         if (mapCharacter === "W") {
           ctx.drawImage(
             this.grassimg,
@@ -441,7 +440,7 @@ export class Map extends Actor {
   keyboard_event_down(key: string) {
     switch (key) {
       case "ArrowUp":
-        this.speed + 5;
+        this.speed++;
         this.mapY++;
         console.log("arriba");
         break;
