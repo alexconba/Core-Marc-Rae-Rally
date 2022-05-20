@@ -3,6 +3,7 @@ import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
 import imageR from "./sprites/road.png";
 import imageC from "./sprites/elGrass.png";
+import { checkLimits } from "./utils/checkLimits";
 
 let pacmanMap = `
 WWWWWWWW...........WWWWWWWWWWWW
@@ -355,34 +356,60 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .map((f) => f.split(""));
 
 export class Map extends Actor {
+  origin: Point;
+  maxSpeed: number;
+  speed: number;
   roadimg: HTMLImageElement;
   grassimg: HTMLImageElement;
+  roadMap: number;
+  timer: number;
+  xFrame: number;
+  yFrame: number;
+  sxParameters: number[];
+  mapY: number;
   constructor(initialPos: Point) {
     super(initialPos);
+    this.origin = { x: initialPos.x, y: initialPos.y };
+    this.maxSpeed = 15;
+    this.speed = 0;
     this.roadimg = new Image();
     this.roadimg.src = imageR;
     this.grassimg = new Image();
     this.grassimg.src = imageC;
+    this.roadMap = pacmanMap.length;
+    this.sxParameters = [7, 6, 5, 4, 5, 6];
+    this.timer = 0;
+    this.xFrame = 0;
+    this.yFrame = 5;
+    this.mapY = 1;
+  }
+  update(delta: number): void {
+    if (this.mapY === -1) {
+      this.speed = 0;
+    } else this.mapY === pacmanMap.length;
   }
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
-    const totalRatio = 26624 / pacmanMap.length;
+
+    let origin = this.origin;
+
     ctx.translate(2040, 1024);
     ctx.rotate(converAngleToRad(180));
-
-    for (let y = pacmanMap.length - 1; y >= 0; y--) {
+    const totalRatio = 26624 / pacmanMap.length;
+    for (let y = this.mapY; y < pacmanMap.length; y++) {
       // en el caso de querer ajustar la linea horizontal al canvas
       //let horizontalSize = 1024 / pacmanMap[y].length;
 
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
+
         if (mapCharacter === "W") {
           ctx.drawImage(
             this.grassimg,
             x * totalRatio,
-            y * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
@@ -391,7 +418,7 @@ export class Map extends Actor {
           ctx.drawImage(
             this.grassimg,
             x * totalRatio,
-            y * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
@@ -400,7 +427,7 @@ export class Map extends Actor {
           ctx.drawImage(
             this.roadimg,
             x * totalRatio,
-            y * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
@@ -411,17 +438,18 @@ export class Map extends Actor {
       }
     }
   }
-  // keyboard_event_down(key: string) {
-  //   switch (key) {
-  //     case "ArrowUp":
-  //       console.log("up");
-  //       break;
-  //     case "ArrowDown":
-  //       console.log("down");
-  //       break;
-  //     default:
-  //       console.log("not a valid key");
-  //       break;
-  //   }
-  // }
+  keyboard_event_down(key: string) {
+    switch (key) {
+      case "ArrowUp":
+        this.speed + 5;
+        this.mapY++;
+        console.log("arriba");
+        break;
+      case "ArrowDown":
+        this.speed - 1;
+        this.mapY--;
+        console.log("abajo");
+        break;
+    }
+  }
 }

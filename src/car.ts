@@ -42,10 +42,13 @@ export class Car extends Actor {
     let newpos = this.position.x + this.carSpeed;
     this.position.x = newpos;
     // console.log(newpos);
+    const horizonLimits = (newPosition: number) => {
+      if (newpos < 1024 && newpos > 0) {
+        this.position.x = newPosition;
+      }
+    };
     let newPosition = this.position.x + this.carSpeed * delta;
-    if (newPosition < 2040 && newPosition > 0) {
-      this.position.x = newPosition;
-    }
+    horizonLimits(newPosition);
   }
   draw(delta: number, ctx: CanvasRenderingContext2D): void {
     ctx.translate(this.position.x, this.position.y);

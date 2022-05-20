@@ -4,6 +4,7 @@ import { FPSViewer } from "./fpsViewer";
 import { Actor } from "./Actor";
 import { Car } from "./car";
 import { Crono } from "./crono";
+import { Barrier } from "./Barrier";
 
 window.onload = () => {
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;

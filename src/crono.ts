@@ -38,7 +38,7 @@ export class Crono extends Actor {
       return `YOUR TIME: ${hAux}:${mAux}:${sAux} `;
     }
     ctx.font = "50px Arial";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillText(timer(), this.position.x, this.position.y);
   }
 }
