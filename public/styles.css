@@ -7,8 +7,20 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  background-color: #eebf38;
+  opacity: 0.8;
+  background-size: 74px 74px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #f3e068,
+    #f3e068 3.7px,
+    #eebf38 3.7px,
+    #eebf38
+  );
+}
+header {
 }
 .visor {
   border: 15px solid black;
