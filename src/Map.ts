@@ -386,7 +386,7 @@ export class Map extends Actor {
   update(delta: number): void {
     if (this.mapY === -1) {
       this.speed = 0;
-    } else this.mapY >= pacmanMap.length;
+    } else this.mapY === pacmanMap.length;
   }
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {

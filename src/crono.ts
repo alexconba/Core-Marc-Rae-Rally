@@ -10,7 +10,7 @@ export class Crono extends Actor {
   }
   keyboard_event_down(key: string): void {
     if ("ArrowUp") {
-      return timer();
+      return;
     }
   }
 }
