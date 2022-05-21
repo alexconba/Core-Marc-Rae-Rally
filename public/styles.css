@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eebf38;
+  background-color: #916020;
   opacity: 0.8;
   background-size: 74px 74px;
   background-image: repeating-linear-gradient(
@@ -20,7 +20,14 @@ body {
     #eebf38
   );
 }
-header {
+
+.card-header {
+  background-color: rgb(73, 102, 23);
+  color: black;
+}
+.list-group-item {
+  background-color: darkolivegreen;
+  color: black;
 }
 .visor {
   border: 15px solid black;

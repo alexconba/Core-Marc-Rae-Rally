@@ -445,8 +445,8 @@ export class Map extends Actor {
         console.log("arriba");
         break;
       case "ArrowDown":
-        this.speed - 1;
-        this.mapY--;
+        this.speed;
+        this.mapY;
         console.log("abajo");
         break;
     }
