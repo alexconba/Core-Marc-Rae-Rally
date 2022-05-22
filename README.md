@@ -25,12 +25,16 @@ https://alexconba.github.io/Core-Marc-Rae-Rally/
 ## ejemplos de codigo:
 
 función para limitar el giro del vehiculo :
-export const checkAngle = (angle: number) => {
+
+```
+ export const checkAngle = (angle: number) => {
 if (angle < 25 && angle > -25) {
 return true;
 }
 return false;
 };
+
+```
 
 ## entorno de ejecucion:
 
