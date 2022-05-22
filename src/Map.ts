@@ -1,49 +1,53 @@
 import { Actor } from "./Actor";
 import { Point } from "./types/Point";
-// import { image } from "../public/sprites/road.png";
+import { converAngleToRad } from "./utils/angleToRad";
+import imageR from "./sprites/road.png";
+import imageC from "./sprites/elGrass.png";
+import imageA from "./sprites/SNES water.png";
+import imageM from "./sprites/meta.png";
+import { checkLimits } from "./utils/checkLimits";
 
-// let road = image;
 let pacmanMap = `
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
-WWWWWWWwwwwwwwwwwwwwwwwwwwwwwww
+WWWWWWWW...........WWWWWWWWWWWW
+WWWWWWW.............wwwwwwwwwww
+WWWWWWW............wwwwwwwwwwww
 WWWWWWW............WWWWWWWwwwww
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWwwwwwwwww.......wwwwwwwwwwWWW
-WWWWWWWWWW.......WWWWWWWWWWWWww
-WWWWWWWW.......WWWWWWWWWWWWwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWwwwww.......WWWWWWWWWWww
-WWWWWWWwwwwwww.......WWWWWWWWWW
-WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWW............WWWWaaWWWWW
+WWWWWWW............WWWWWWWWWWWW
+WWWWWWa............WWWWWWWWWWWW
+WWww..................WWWWWWWWW
+WWww..................wwwwwwWWW
+WWWW......aaa........wWWWWWWWww
+WWWW.......aaa........WWWWWwwww
+WWWWWWW................WWWWWwww
+WWWWWWW...............WWWWwwwww
+WWWWWWW.......WW......WWWWwwwww
+WWWWWWW.......WW......WWWWwwwww
+WWWWWWW.......aaa.....WWWWwwwww
+WWWWWWW.......WWWW....WWWWwwwww
+WWWWWWWww.......WWW...WWWWwwwww
+WWWWWWWwwww.......a.....WWWWwww
+WWWWWWWwwwww.......a....WWWWWww
+WWWWWWWwwwwwww..........WWWWWWW
+WWWWWWWwwwwwwww.........WWWWWWW
 WWWWWWWwwwwwwwww.......WWWWWWWW
 WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWawwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
-WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWaWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWw.......WWWWWWWWWWwwwwww
+WWWWWWWw.......WWWWWWWaaWwwwwww
 WWWWWW.......WWWWWWWWWWwwwwwwww
 WWWWWWW............WWWWWWWwwwww
 WWWWWWWWWWWW.......WWWWWWWWWWWW
 WWWWWWWWWWWW.......WWWWWWWWWWWW
 WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWWWWWWWWWW....a..WWWWWWWWWWWW
 WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
-WWWWWWWWWWWW.......WWWWWWWWWWWW
+WWWaaWWWWWWW.......WWWWWWWWWWWW
 WWwwwwwwwww.......wwwwwwwwwwWWW
 WWWWWWWWWW.......WWWWWWWWWWWWww
 WWWWWWWW.......WWWWWWWWWWWWwwww
@@ -52,29 +56,29 @@ WWWWWWW.......WWWWWWWWWWWWwwwww
 WWWWWWW.......WWWWWWWWWWWWwwwww
 WWWWWWW.......WWWWWWWWWWWWwwwww
 WWWWWWW.......WWWWWWWWWWWWwwwww
-WWWWWWW.......WWWWWWWWWWWWwwwww
+WWWWWWW.......WWWWWWWWWWaWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWwwww.......WWWWWWWWWWwww
 WWWWWWWwwwww.......WWWWWWWWWWww
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwwwwwww.......WWWWWWWWW
-WWWWWWWwwwwwwwww.......WWWWWWWW
+WWWWWWWwwwawwwww.......WWWWWWWW
 WWWWWWWwwwwwwwwwww.......WWWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWaaWWwwwww
 WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWwww.......WWWWWWWWWWawww
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwwwwwww.......WWWWWWWWW
 WWWWWWWwwwwwwwww.......WWWWWWWW
-WWWWWWWwwwwwwwwwww.......WWWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWaaawwwwwwwwwww.......WWWWWW
+WWWWWWWwwwwwwwwwaww.......WWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
@@ -91,40 +95,40 @@ WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
+WWWaWWWww.......WWWWWWWWWWwwwww
 WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWaaaWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
+WWWaWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWaaawwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWaaaWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWwww.......WWWWWWWWWWwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
+WaWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWwww.......WWWWWWWWWWwwww
 WWWWWWWwwwww.........WWWWWWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
-WWWW..........w..........WWWWWW
-WWWW..........w..........WWWWWW
+WWWW..........a..........WWWWWW
+WWWW.......a..w..........WWWWWW
 WWWW.....................WWWWWW
 WWWWWW...................WWWWWW
-WWWWWW............WWWWWWwwwwwww
-WWWW..............WWWWWwwwwwwww
+WWWWWW............WWWaWWwwwwwww
+WWWW..............WWWaawwwwwwww
 WWWWW....................WWWWWW
-WWWW......ww.............WWWWWW
-WWWW......ww.............WWWWWW
-WWWW......ww.............WWWWWW
+WWWW......aa.............WWWWWW
+WWWW......aa.............WWWWWW
+WWWW......aa.............WWWWWW
 WWWW.....................WWWWWW
-WWWWWW.......www.........WWWWWW
+WWWWWW.......www.........WWaWWW
 WWWWW........www.........WWWWWW
 WWWW.........www.........WWWWWW
 WWWW.....................WWWWWW
@@ -132,9 +136,9 @@ WWWW...w..........w......WWWWWW
 WWWW.....................WWWWWW
 WWWWWW...................WWWWWW
 WWWWWWWwwwwww............WWWWWW
-WWWWWWWwwwwww.............WWWWW
+WWaaWWWwwwwww.............WWWWW
 WWWWWWWwwwww..........WWWWWwwww
-WWWWWWWww..........WWWWWWWWWWww
+WWWWWWWww..........WWWWWWWaWWww
 WWWWWWW............WWWWWWWWWWww
 ww.........www.......WWWWWWWWWW
 W.........wwwww.......WWWWWWWWW
@@ -142,21 +146,92 @@ WW........wwwwww.......WWWWWWWW
 WWW.......wwwwwwww.......WWWWWW
 WWWW......wwwwwwwww.......WWWWW
 WWWWWW....wwwwwwwww.......WWWWW
-WWWW......wwwwwwww.......WWWWWW
+WWWW......wwwaaaww.......WWWWWW
 WWWW......wwwwwwwww.......WWWWW
 WWWW......wwwwwwwww.......WWWWW
-WWWW....wwwwwwwwww.......WWWWWW
-WWWW....wwwwwwwwwww.......WWWWW
+WWWW....wwwwwwwwww.......aaWWWW
+WWWW....wwwwwwwaaww.......WWWWW
 WWW.......wwwwwwwww.......WWWWW
-WWW.......wwwwwwww.......WWWWWW
-WWWWW...wwwwwwwwwww.......WWWWW
-WWWWW...wwwwwwwwwww.......WWWWW
-WWWWW...wwwwwwwwwww.......WWWWW
-WWWW....wwwwwwwww.......WWWWWWW
-WWWW....wwwwww.......WWWWWWWWWW
-WWWW....www.......WWWWWWWWWWwww
+WWW.......wwwwwwww.......aaaWWW
+WWWWW...aawwwwawwww.......WWWWW
+WWWWW...aawwwwwwwww.......WWWWW
+WWWWW...aawwwwwwwww.......WWWWW
+WWWW....aawwwwwww.......WWWWWWW
+WWWW....aawwww.......WWWWWWWWWW
+WWWW....aaaw.......WWWWWWWWWWwww
 WWWWW..........WWWWWWWWWWwwwwww
 WWWWWW.......WWWWWWWWWWwwwwwwww
+WWWWWWWww.......WWWWaWWWWWwwwww
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWwwwww.......WWWWWWWWWWww
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwwwwwww.......WWWWWWWWW
+WWWWWWWwwwwwwwww.......WWWWaWWW
+WWWWWWWwwwwwwwwwww.......WWWWWW
+WWWWWWWwwaawwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwww.......WWWWWWW
+WWWWWWWwwwwwww.......WWWWWWWWWW
+WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwwa.......WWWWWWWWWWwwww
+WWWWWWwww.......WWWWWaWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWaWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWaaWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww....a..WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww..a....WWWWWWWWWWwwwww
+WWWWaWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWww.......WWWWWWWWWWwwwww
+WWWWWWWwww.......WWWWWWWWWWwwww
+WWWWWWWww.......WWWWWWWWawwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWwwww.......WWWWWWWWWWwww
 WWWWWWWwwwww.......WWWWWWWWWWww
@@ -174,90 +249,19 @@ WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWwww.......WWWWWWWWWWwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwww.......WWWWWWWWWWwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwww.......WWWWWWWWWWwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWwwwww.......WWWWWWWWWWww
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwwwwwww.......WWWWWWWWW
 WWWWWWWwwwwwwwww.......WWWWWWWW
 WWWWWWWwwwwwwwwwww.......WWWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
-WWWWWWWwwwwwwwwww.......WWWWWWW
-WWWWWWWwwwwwww.......WWWWWWWWWW
-WWWWWWWwwww.......WWWWWWWWWWwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWWwww.......WWWWWWWWWWwwww
-WWWWWWWwwwwwww.......WWWWWWWWWW
-WWWWWWWwwwwwwww.......WWWWWWWWW
-WWWWWWWwwwwwwwww.......WWWWWWWW
-WWWWWWWwwwwwwwwwww.......WWWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWawwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwww.......WWWWWWWWWWwww
 WWWWWWWw.......WWWWWWWWWWwwwwww
-WWWWWW.......WWWWWWWWWWwwwwwwww
-WWWWWWw.......WWWWWWWWWWwwwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWaaa.....WWWWWWWWWWwwwwwwww
+WWWWWaaa......WWWWWWWWWWwwwwwww
+WWWWWWwww.......WWWWWWWaWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
@@ -265,22 +269,22 @@ WWWWWWWwww.......WWWWWWWWWWwwww
 WWWWWWWwwwww.........WWWWWWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
-WWWW..........w..........WWWWWW
-WWWW..........w..........WWWWWW
+WWWW..........a..........WWWWWW
+WWWW..........a..........WWWWWW
 WWWW.....................WWWWWW
 WWWWWW...................WWWWWW
-WWWWWW............WWWWWWwwwwwww
-WWWW..............WWWWWwwwwwwww
+WWWWWW............aaaaaWwwwwwww
+WWWW..............aaaaawwwwwwww
 WWWWW....................WWWWWW
 WWWW......ww.............WWWWWW
 WWWW......ww.............WWWWWW
 WWWW......ww.............WWWWWW
 WWWW.....................WWWWWW
-WWWWWW.......www.........WWWWWW
-WWWWW........www.........WWWWWW
-WWWW.........www.........WWWWWW
+WWWWWW.......aaa.........WWWWWW
+WWWWW........aaa.........WWWWWW
+WWWW.........aaa.........WWWWWW
 WWWW.....................WWWWWW
-WWWW...w..........w......WWWWWW
+WWWW...w..........aa.....WWWWWW
 WWWW.....................WWWWWW
 WWWWWW...................WWWWWW
 WWWWWWWwwwwww............WWWWWW
@@ -293,7 +297,7 @@ WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
-WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWWWwww.a.....WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
@@ -309,8 +313,8 @@ WWWWWWWwwwww.......WWWWWWWWWWww
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwwwwwww.......WWWWWWWWW
 WWWWWWWwwwwwwwww.......WWWWWWWW
-WWWWWWWwwwwwwwwwww.......WWWWWW
-WWWWWWWwwwwwwwwwwww.......WWWWW
+WWWWWWWwwwwwwwwwwaa......WWWWWW
+WWWWWWWwwwwwwwwwwwaa......WWWWW
 WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
@@ -329,6 +333,42 @@ WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......ww.............WWWWWW
+WWWaa.....ww.............WWWWWW
+WWWaaa....ww.............WWWWWW
+WWWaaa...................WWWWWW
+WWWWWa.......waa.........WWWWWW
+WWWWW........waa.........WWWWWW
+WWWW.........waa.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...a..........w......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........wwwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......wa.............WWWWWW
+WWWW......wa.............WWWWWW
+WWWW......aa.............WWWWWW
+WWWW.....................WWWWWW
+WWWWWW.......aaa.........WWWWWW
+WWWWW........aaa.........WWWWWW
+WWWW.........aaa.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...a..........a......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........wwwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
@@ -342,7 +382,7 @@ WWWWWWWww...........WWWWWWWWWWw
 WWWWWW................WWWWWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
-WWWWW....................WWWWWW
+WWWWWggggggggggggggggggggWWWWWW
 WWWWw....................WWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
@@ -352,53 +392,109 @@ WW..........................WWW
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
   .split("\n")
   .map((f) => f.split(""));
-// let road = new Image();
-// let grass = new Image();
-// road.src = "./public/sprites/road.png";
-// grass.src = "./public/sprites/snes High Grass.jpg";
 
 export class Map extends Actor {
+  origin: Point;
+  maxSpeed: number;
+  speed: number;
+  roadimg: HTMLImageElement;
+  grassimg: HTMLImageElement;
+  waterimg: HTMLImageElement;
+  metaimg: HTMLImageElement;
+  roadMap: number;
+  timer: number;
+  xFrame: number;
+  yFrame: number;
+  sxParameters: number[];
+  mapY: number;
+  constructor(initialPos: Point) {
+    super(initialPos);
+    this.origin = { x: initialPos.x, y: initialPos.y };
+    this.maxSpeed = 15;
+    this.speed = 0;
+    this.roadimg = new Image();
+    this.roadimg.src = imageR;
+    this.grassimg = new Image();
+    this.grassimg.src = imageC;
+    this.waterimg = new Image();
+    this.waterimg.src = imageA;
+    this.metaimg = new Image();
+    this.metaimg.src = imageM;
+    this.roadMap = pacmanMap.length;
+    this.sxParameters = [7, 6, 5, 4, 5, 6];
+    this.timer = 0;
+    this.xFrame = 0;
+    this.yFrame = 5;
+    this.mapY = 1;
+  }
+  update(delta: number): void {
+    if (this.mapY === -1) {
+      this.speed = 0;
+    } else this.mapY === pacmanMap.length;
+    if (pacmanMap.length === this.mapY - 1) {
+      this.speed = 0;
+    }
+  }
+
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
-    const totalRatio = 26624 / pacmanMap.length;
 
-    //ctx.save();
-    for (let y = pacmanMap.length - 1; y >= 0; y--) {
+    let origin = this.origin;
+
+    ctx.translate(2040, 1024);
+    ctx.rotate(converAngleToRad(180));
+    const totalRatio = 26624 / pacmanMap.length;
+    for (let y = this.mapY; y < pacmanMap.length; y++) {
       // en el caso de querer ajustar la linea horizontal al canvas
       //let horizontalSize = 1024 / pacmanMap[y].length;
 
       for (let x = 0; x < pacmanMap[y].length; x++) {
         ctx.beginPath();
         const mapCharacter = pacmanMap[y][x];
-        if (mapCharacter == "W") {
-          // ctx.drawImage(grass, 3, 49, 50, 50);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
-            y * totalRatio,
+        if (mapCharacter === "W") {
+          ctx.drawImage(
+            this.grassimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "green";
         }
-        if (mapCharacter == "w") {
-          // ctx.drawImage(grass, 3, 49, 50, 50);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
-            y * totalRatio,
+        if (mapCharacter === "w") {
+          ctx.drawImage(
+            this.grassimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "green";
         }
-        if (mapCharacter == ".") {
-          // ctx.drawImage(road, 50, 450, 390, 500);
-          ctx.rect(
-            x * totalRatio, // x * horizontalSize
-            y * totalRatio,
+        if (mapCharacter === ".") {
+          ctx.drawImage(
+            this.roadimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
             totalRatio,
             totalRatio
           );
-          ctx.fillStyle = "grey";
+        }
+        if (mapCharacter === "a") {
+          ctx.drawImage(
+            this.waterimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+        }
+        if (mapCharacter === "g") {
+          ctx.drawImage(
+            this.metaimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
+            totalRatio,
+            totalRatio
+          );
         }
         ctx.closePath();
         ctx.fill();
@@ -409,13 +505,14 @@ export class Map extends Actor {
   keyboard_event_down(key: string) {
     switch (key) {
       case "ArrowUp":
-        console.log("up");
+        this.speed++;
+        this.mapY++;
+        console.log("arriba");
         break;
       case "ArrowDown":
-        console.log("down");
-        break;
-      default:
-        console.log("not a valid key");
+        this.speed;
+        this.mapY;
+        console.log("abajo");
         break;
     }
   }

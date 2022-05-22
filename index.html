@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Core-Marc-Rae-Rally</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,19 +14,64 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="visor">
-      <canvas
-        id="canvas"
-        width="2040"
-        height="1024"
-        style="width: 1000px; height: 500px"
-      ></canvas>
-    </div>
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Core-Marc-Rae</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ranking</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="card" style="width: 18rem">
+        <div class="card-header"><h2>Top Time</h2></div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Marc- 00:35:06</li>
+          <li class="list-group-item">Luis- 00:40:75</li>
+          <li class="list-group-item">Marcos-00:45:25</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col">
+          <canvas id="canvas" width="2040" height="1024"></canvas>
+        </div>
+        <div class="col" id="manual">
+          <h2>Manual del Juego</h2>
+          <ul>
+            <li>movimiento:</li>
+            <li>acelerar: ArrowUp &#8593</li>
+            <li>frenar: ArrowDown &#8595</li>
+            <li> derecha: ArrowRight &#8594</li>
+            <li> izquierda: ArrowLeft &#8592</li>
+          </ul>
+        </div>
+      </div>
+    </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="src/script.ts" type="module"></script>
+    <script src="/src/script.ts" type="module"></script>
   </body>
 </html>

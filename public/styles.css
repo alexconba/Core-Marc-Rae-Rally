@@ -9,13 +9,41 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #916020;
+  opacity: 0.8;
+  background-size: 74px 74px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #f3e068,
+    #f3e068 3.7px,
+    #eebf38 3.7px,
+    #eebf38
+  );
 }
-.visor {
+
+.card-header {
+  background-color: rgb(221, 224, 33);
+  color: black;
+}
+.list-group-item {
+  background-color: rgb(207, 240, 150);
+  color: black;
+}
+/* .visor {
   border: 15px solid black;
-  /* border-radius: 45%; */
-}
+   border-radius: 45%; 
+} */
 
 #canvas {
   background: rgb(151, 136, 105);
   display: block;
+  width: 1000px;
+  height: 500px;
+  border: 15px solid black;
+}
+#manual {
+  color: black;
+  font-size: larger;
+  background-color: rgb(245, 205, 153);
+  border: solid 5px black;
 }
