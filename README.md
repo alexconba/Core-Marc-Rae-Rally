@@ -6,8 +6,8 @@ node.js, typescript, vite, bootstrap.
 
 ## imágenes:
 
-<img src="/docs/asset/carros.6688e9a7.png">
-<img src="/docs/asset/road.3ee0571f.png">
+<img src="./src/sprites/carros.png">
+<img src="./src/sprites/road.png">
 ## Motivación del proyecto:
 
 Este proyecto forma parte del bootcamp que actualmente estoy cursando en corecodeschool.
