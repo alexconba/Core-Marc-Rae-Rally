@@ -42,7 +42,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="container">
       <div class="card" style="width: 18rem">
         <div class="card-header"><h2>Top Time</h2></div>
         <ul class="list-group list-group-flush">
@@ -51,24 +51,20 @@
           <li class="list-group-item">Marcos-00:45:25</li>
         </ul>
       </div>
-
-      <div class="visor">
-        <canvas
-          id="canvas"
-          width="2040"
-          height="1024"
-          style="width: 1000px; height: 500px"
-        ></canvas>
-      </div>
-      <div id="manual">
-        <h2>Manual del Juego</h2>
-        <ul>
-          <li>movimiento:</li>
-          <li>acelerar: ArrowUp</li>
-          <li>frenar: ArrowDown</li>
-          <li>giro derecha: ArrowRight</li>
-          <li>giro isquierda: ArrowLeft</li>
-        </ul>
+      <div class="row">
+        <div class="col">
+          <canvas id="canvas" width="2040" height="1024"></canvas>
+        </div>
+        <div class="col" id="manual">
+          <h2>Manual del Juego</h2>
+          <ul>
+            <li>movimiento:</li>
+            <li>acelerar: ArrowUp &#8593</li>
+            <li>frenar: ArrowDown &#8595</li>
+            <li> derecha: ArrowRight &#8594</li>
+            <li> izquierda: ArrowLeft &#8592</li>
+          </ul>
+        </div>
       </div>
     </main>
     <script
