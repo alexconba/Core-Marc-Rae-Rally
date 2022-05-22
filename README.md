@@ -6,6 +6,8 @@ node.js, typescript, vite, bootstrap.
 
 ## imágenes:
 
+<img src="/docs/asset/carros.6688e9a7.png">
+<img src="/docs/asset/road.3ee0571f.png">
 ## Motivación del proyecto:
 
 Este proyecto forma parte del bootcamp que actualmente estoy cursando en corecodeschool.
@@ -23,13 +25,12 @@ https://alexconba.github.io/Core-Marc-Rae-Rally/
 ## ejemplos de codigo:
 
 función para limitar el giro del vehiculo :
-" export const checkAngle = (angle: number) => {
+export const checkAngle = (angle: number) => {
 if (angle < 25 && angle > -25) {
 return true;
 }
 return false;
 };
-"
 
 ## entorno de ejecucion:
 
