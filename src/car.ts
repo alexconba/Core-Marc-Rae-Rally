@@ -57,7 +57,7 @@ export class Car extends Actor {
     ctx.drawImage(
       this.carImage,
       176,
-      149,
+      150,
       32,
       72,
       -this.carSize.h / 2,

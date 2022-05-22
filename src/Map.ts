@@ -17,8 +17,8 @@ WWWWWWW............WWWWWWWWWWWW
 WWWWWWW............WWWWWWWWWWWW
 WWww..................WWWWWWWWW
 WWww..................wwwwwwWWW
-WWWW......www........wWWWWWWWww
-WWWW.......www........WWWWWwwww
+WWWW......aaa........wWWWWWWWww
+WWWW.......aaa........WWWWWwwww
 WWWWWWW................WWWWWwww
 WWWWWWW...............WWWWwwwww
 WWWWWWW.......WW......WWWWwwwww
@@ -331,6 +331,42 @@ WWWWWWWwwwwwwwwwwww.......WWWWW
 WWWWWWWwwwwwwwwww.......WWWWWWW
 WWWWWWWwwwwwww.......WWWWWWWWWW
 WWWWWWWwwww.......WWWWWWWWWWwww
+WWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW.....................WWWWWW
+WWWWWW.......www.........WWWWWW
+WWWWW........www.........WWWWWW
+WWWW.........www.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...w..........w......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........wwwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
+WWWWW............WWWWWWwwwwwww
+WWWW..............WWWWWwwwwwwww
+WWWWW....................WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW......ww.............WWWWWW
+WWWW.....................WWWWWW
+WWWWWW.......www.........WWWWWW
+WWWWW........www.........WWWWWW
+WWWW.........www.........WWWWWW
+WWWW.....................WWWWWW
+WWWW...w..........w......WWWWWW
+WWWW.....................WWWWWW
+WWWWWW...................WWWWWW
+WWWWWWWwwwwww............WWWWWW
+WWWWWWWwwwwww.............WWWWW
+WWWWWWWwwwww..........wwwwwwwww
+WWWWWWwww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
 WWWWWWWww.......WWWWWWWWWWwwwww
@@ -423,6 +459,15 @@ export class Map extends Actor {
           );
         }
         if (mapCharacter === ".") {
+          ctx.drawImage(
+            this.roadimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+        }
+        if (mapCharacter === "a") {
           ctx.drawImage(
             this.roadimg,
             x * totalRatio,
