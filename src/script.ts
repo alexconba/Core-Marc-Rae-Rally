@@ -15,7 +15,7 @@ window.onload = () => {
     // new Pacman({ x: 200, y: 200 }, 'yellow', 1000),
     // new Pacman({ x: 200, y: 400 }, 'pink'),
     new FPSViewer({ x: 5, y: 50 }),
-    new Crono({ x: 400, y: 50 }),
+    new Crono({ x: 1400, y: 50 }),
     new Car({ x: 1020, y: 800 }),
   ];
   let lastFrame = 0;

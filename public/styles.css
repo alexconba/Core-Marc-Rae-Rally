@@ -22,11 +22,11 @@ body {
 }
 
 .card-header {
-  background-color: rgb(73, 102, 23);
+  background-color: rgb(221, 224, 33);
   color: black;
 }
 .list-group-item {
-  background-color: darkolivegreen;
+  background-color: rgb(207, 240, 150);
   color: black;
 }
 .visor {
@@ -37,4 +37,10 @@ body {
 #canvas {
   background: rgb(151, 136, 105);
   display: block;
+}
+#manual {
+  color: black;
+  font-size: larger;
+  background-color: rgb(245, 205, 153);
+  border: solid 5px black;
 }

@@ -4,6 +4,7 @@ import { converAngleToRad } from "./utils/angleToRad";
 import imageR from "./sprites/road.png";
 import imageC from "./sprites/elGrass.png";
 import imageA from "./sprites/SNES water.png";
+import imageM from "./sprites/meta.png";
 import { checkLimits } from "./utils/checkLimits";
 
 let pacmanMap = `
@@ -381,7 +382,7 @@ WWWWWWWww...........WWWWWWWWWWw
 WWWWWW................WWWWWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
-WWWWW....................WWWWWW
+WWWWWggggggggggggggggggggWWWWWW
 WWWWw....................WWWWWW
 WWWWW....................WWWWWW
 WWWW.....................WWWWWW
@@ -399,6 +400,7 @@ export class Map extends Actor {
   roadimg: HTMLImageElement;
   grassimg: HTMLImageElement;
   waterimg: HTMLImageElement;
+  metaimg: HTMLImageElement;
   roadMap: number;
   timer: number;
   xFrame: number;
@@ -416,6 +418,8 @@ export class Map extends Actor {
     this.grassimg.src = imageC;
     this.waterimg = new Image();
     this.waterimg.src = imageA;
+    this.metaimg = new Image();
+    this.metaimg.src = imageM;
     this.roadMap = pacmanMap.length;
     this.sxParameters = [7, 6, 5, 4, 5, 6];
     this.timer = 0;
@@ -427,6 +431,9 @@ export class Map extends Actor {
     if (this.mapY === -1) {
       this.speed = 0;
     } else this.mapY === pacmanMap.length;
+    if (pacmanMap.length === this.mapY - 1) {
+      this.speed = 0;
+    }
   }
 
   draw(delta: number, ctx: CanvasRenderingContext2D) {
@@ -474,6 +481,15 @@ export class Map extends Actor {
         if (mapCharacter === "a") {
           ctx.drawImage(
             this.waterimg,
+            x * totalRatio,
+            (y - this.mapY) * totalRatio,
+            totalRatio,
+            totalRatio
+          );
+        }
+        if (mapCharacter === "g") {
+          ctx.drawImage(
+            this.metaimg,
             x * totalRatio,
             (y - this.mapY) * totalRatio,
             totalRatio,

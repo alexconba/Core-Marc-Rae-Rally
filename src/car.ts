@@ -43,8 +43,9 @@ export class Car extends Actor {
     this.position.x = newpos;
     // console.log(newpos);
     const horizonLimits = (newPosition: number) => {
-      if (newpos < 1024 && newpos > 0) {
+      if (newpos + 32 >= 2039 && newpos > 0) {
         this.position.x = newPosition;
+        return (this.carAcceleration = 0);
       }
     };
     let newPosition = this.position.x + this.carSpeed * delta;
