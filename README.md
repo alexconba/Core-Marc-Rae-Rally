@@ -1,35 +1,50 @@
 # Core-Marc-Rae-Rally
 
-Tecnologías aplicadas:
+## Tecnologías aplicadas:
+
 node.js, typescript, vite, bootstrap.
 
-imágenes:
+## imágenes:
 
-Motivación del proyecto:
+## Motivación del proyecto:
 
 Este proyecto forma parte del bootcamp que actualmente estoy cursando en corecodeschool.
 
-estructura del proyecto:
+## estructura del proyecto:
 
-Acceso directo al juego:
+## Acceso directo al juego:
 
-índice:
+https://alexconba.github.io/Core-Marc-Rae-Rally/
 
-Manual de instalación y deployment:
+## índice:
 
-ejemplos de codigo:
+## Manual de instalación y deployment:
 
-entorno de ejecucion:
+## ejemplos de codigo:
+
+función para limitar el giro del vehiculo :
+" export const checkAngle = (angle: number) => {
+if (angle < 25 && angle > -25) {
+return true;
+}
+return false;
+};
+"
+
+## entorno de ejecucion:
+
 node.js, vite.
 
-variables globales:
+## variables globales:
 
-listado de paquetes y dependencias:
+## listado de paquetes y dependencias:
 
-estadisticas:
+## estadisticas:
 
-licencia:
+## licencia:
 
-Agradecimientos:
+## Agradecimientos:
+
+A Luis M. feijo, Alfonso, Jesús, Juan Pablo, julian, luis Cabo, Marcos Ínigo, Marc Pomar y Antoni Bardina.
 
 otros:
