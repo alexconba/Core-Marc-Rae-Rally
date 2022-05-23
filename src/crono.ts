@@ -1,7 +1,7 @@
 import { start } from "repl";
 import { Actor } from "./Actor";
 import { timer } from "./utils/Timer";
-
+//  let Go = addEventListener(KeyboardEvent,timer(), true);
 export class Crono extends Actor {
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     ctx.font = "50px Arial";
