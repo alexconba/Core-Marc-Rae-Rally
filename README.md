@@ -46,7 +46,9 @@ node.js, vite.
 
 ## estadisticas:
 
-## licencia:
+## License:
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ## Agradecimientos:
 
