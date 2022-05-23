@@ -3,6 +3,7 @@ import { Point } from "./types/Point";
 import { converAngleToRad } from "./utils/angleToRad";
 import { checkLimits } from "./utils/checkLimits";
 import { checkAngle } from "./utils/angleLimit";
+import { Map } from "./Map";
 import imageA from "./sprites/carros.png";
 interface Size {
   w: number;
@@ -43,9 +44,10 @@ export class Car extends Actor {
     this.position.x = newpos;
     // console.log(newpos);
     const horizonLimits = (newPosition: number) => {
-      if (newpos + 32 >= 2039 && newpos > 0) {
-        this.position.x = newPosition;
-        return (this.carAcceleration = 0);
+      if (newpos + 32 >= 1990 || newpos <= 122) {
+        // this.position.x = newPosition;
+        // console.log(newPosition);
+        return (this.carSpeed = 0);
       }
     };
     let newPosition = this.position.x + this.carSpeed * delta;
@@ -70,10 +72,10 @@ export class Car extends Actor {
   keyboard_event_down(key: string): void {
     if (key === "ArrowLeft") {
       this.angleSpeed -= 4;
-      this.carAcceleration = -0.3;
+      this.carAcceleration = -0.5;
     } else if (key === "ArrowRight") {
       this.angleSpeed += 4;
-      this.carAcceleration = 0.3;
+      this.carAcceleration = 0.5;
     }
   }
   keyboard_event_up(key: string): void {

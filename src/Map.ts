@@ -428,14 +428,24 @@ export class Map extends Actor {
     this.mapY = 1;
   }
   update(delta: number): void {
-    if (this.mapY === -1) {
-      this.speed = 0;
-    } else this.mapY === pacmanMap.length;
-    if (pacmanMap.length === this.mapY - 1) {
-      this.speed = 0;
-    }
-  }
+    // if (this.mapY === -1) {
+    //   this.speed = 0;
+    // } else this.mapY === pacmanMap.length;
+    // if (pacmanMap.length === this.mapY - 1) {
+    //   this.speed = 0;
+    // }
 
+    const horizonLimits = (nmapY: number) => {
+      if (this.mapY === -1) {
+        return (this.speed = 0);
+      } else this.mapY === pacmanMap.length;
+      if (pacmanMap.length === this.mapY - 1) {
+        return (this.speed = 0);
+      }
+    };
+
+    horizonLimits(this.mapY);
+  }
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
 
