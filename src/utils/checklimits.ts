@@ -1,12 +1,7 @@
 import { Point } from "../types/Point";
 
-export const checkLimits = (position: Point) => {
-  if (
-    position.x < 1024 &&
-    position.x > 0 &&
-    position.y > 0 &&
-    position.y < 1024
-  ) {
+export const checkLimits = (position: number) => {
+  if (position >= 2040 && position <= 0) {
     return true;
   }
   return false;
