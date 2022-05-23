@@ -15,6 +15,7 @@ Este proyecto forma parte del bootcamp que actualmente estoy cursando en corecod
 
 ## estructura del proyecto:
 
+```
 ├───docs/
 │ ├───assets/
 │ │ ├───carros.6688e9a7.png
@@ -56,6 +57,7 @@ Este proyecto forma parte del bootcamp que actualmente estoy cursando en corecod
 ├───package.json
 ├───README.md
 └───tsconfig.json
+```
 
 ## Acceso directo al juego:
 
