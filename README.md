@@ -100,6 +100,6 @@ node.js, vite.
 
 ## Agradecimientos:
 
-A Luis M. feijo, Alfonso, Jesús, Juan Pablo, julian, luis Cabo, Marcos Ínigo, Marc Pomar y Antoni Bardina.
+A Luis M. feijo, Alfonso, Jesús, Juan Pablo, julian, luis Cabo, Marcos Ínigo, Marc Pomar y Antoni B.
 
 otros:
