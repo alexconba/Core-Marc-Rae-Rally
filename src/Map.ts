@@ -428,23 +428,15 @@ export class Map extends Actor {
     this.mapY = 1;
   }
   update(delta: number): void {
-    // if (this.mapY === -1) {
-    //   this.speed = 0;
-    // } else this.mapY === pacmanMap.length;
-    // if (pacmanMap.length === this.mapY - 1) {
-    //   this.speed = 0;
-    // }
-
-    const horizonLimits = (nmapY: number) => {
-      if (this.mapY === -1) {
-        return (this.speed = 0);
-      } else this.mapY === pacmanMap.length;
-      if (pacmanMap.length === this.mapY - 1) {
-        return (this.speed = 0);
-      }
-    };
-
-    horizonLimits(this.mapY);
+    //   const horizonLimits = (mapY: number) => {
+    //     if (this.mapY === -1) {
+    //       return (this.speed = 0);
+    //     } else this.mapY === pacmanMap.length;
+    //     if (pacmanMap.length === this.mapY - 1) {
+    //       return (this.speed = 0);
+    //     }
+    //   };
+    //   horizonLimits(this.mapY);
   }
   draw(delta: number, ctx: CanvasRenderingContext2D) {
     /* Fill the code */
@@ -454,6 +446,8 @@ export class Map extends Actor {
     ctx.translate(2040, 1024);
     ctx.rotate(converAngleToRad(180));
     const totalRatio = 26624 / pacmanMap.length;
+    this.mapY += this.speed;
+
     for (let y = this.mapY; y < pacmanMap.length; y++) {
       // en el caso de querer ajustar la linea horizontal al canvas
       //let horizontalSize = 1024 / pacmanMap[y].length;
@@ -515,14 +509,19 @@ export class Map extends Actor {
   keyboard_event_down(key: string) {
     switch (key) {
       case "ArrowUp":
-        this.speed++;
-        this.mapY++;
-        console.log("arriba");
+        this.speed = 1;
+
         break;
       case "ArrowDown":
-        this.speed;
-        this.mapY;
-        console.log("abajo");
+        this.speed = !this.speed ? 0 : this.speed--;
+        break;
+    }
+  }
+
+  keyboard_event_up(key: string) {
+    switch (key) {
+      case "ArrowUp":
+        this.speed = 0;
         break;
     }
   }
